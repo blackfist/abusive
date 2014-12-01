@@ -1,0 +1,55 @@
+<%- model_class = Incident -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:uuid) %>:</strong></dt>
+  <dd><%= @incident.uuid %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:incident_summary) %>:</strong></dt>
+  <dd><%= @incident.incident_summary %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:incident_year) %>:</strong></dt>
+  <dd><%= @incident.incident_year %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:incident_month) %>:</strong></dt>
+  <dd><%= @incident.incident_month %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:reported_year) %>:</strong></dt>
+  <dd><%= @incident.reported_year %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:reported_month) %>:</strong></dt>
+  <dd><%= @incident.reported_month %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:location_state) %>:</strong></dt>
+  <dd><%= @incident.location_state %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:location_city) %>:</strong></dt>
+  <dd><%= @incident.location_city %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:location_notes) %>:</strong></dt>
+  <dd><%= @incident.location_notes %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:context) %>:</strong></dt>
+  <dd><%= @incident.context %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:victim_animal) %>:</strong></dt>
+  <dd><%= @incident.victim_animal %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:victim_notes) %>:</strong></dt>
+  <dd><%= @incident.victim_notes %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:abuse_force) %>:</strong></dt>
+  <dd><%= @incident.abuse_force %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:abuse_search) %>:</strong></dt>
+  <dd><%= @incident.abuse_search %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:abuse_misconduct) %>:</strong></dt>
+  <dd><%= @incident.abuse_misconduct %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:abuse_intimidation) %>:</strong></dt>
+  <dd><%= @incident.abuse_intimidation %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:abuse_sexual) %>:</strong></dt>
+  <dd><%= @incident.abuse_sexual %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:abuse_restrained) %>:</strong></dt>
+  <dd><%= @incident.abuse_restrained %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:abuse_notes) %>:</strong></dt>
+  <dd><%= @incident.abuse_notes %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              incidents_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_incident_path(@incident), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              incident_path(@incident),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

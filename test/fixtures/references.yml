@@ -1,0 +1,28 @@
+# == Schema Information
+#
+# Table name: references
+#
+#  id            :integer          not null, primary key
+#  url           :string
+#  date_accessed :date
+#  headline      :string
+#  org_name      :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  incident_id   :integer
+#  publish_date  :date
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url: MyString
+  date_accessed: 2014-09-23
+  headline: MyString
+  org_name: MyString
+
+two:
+  url: MyString
+  date_accessed: 2014-09-23
+  headline: MyString
+  org_name: MyString

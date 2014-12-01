@@ -1,0 +1,389 @@
+<h1>TODO ITEMS ON THIS FORM</h1>
+<ul>
+  <li>Need to be able to add more references</li>
+  <li>Needs to be a bit prettier</li>
+  <li>Form seems to change the month to 1 if not set explictly</li>
+  <li>Editing an incident seems to add another reference</li>
+</ul>
+<%= form_for @incident_form, :html => { :class => "form-horizontal incident", :role => "form" } do |f| %>
+
+  <% if @incident_form.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@incident_form.errors.count, "error") %> prohibited this incident from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @incident_form.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+<div class="row">
+<h2>Basic Information</h2>
+<div class="col-md-12">
+  <div class="form-group">
+    <%= f.label :incident_summary %>
+    <%= f.text_area :incident_summary,
+      :class => 'form-control', rows:5,
+      placeholder:"Describe what happened" %>
+  </div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-6">
+  <div class="form-group">
+    <%= f.label :incident_year %>
+    <%= f.select :incident_year, %w(2006 2007 2008 2009 2010 2011 2012 2013 2014), {prompt:"Please select"}, class:'form-control' %>
+  </div>
+</div>
+
+<div class="col-md-6">
+  <div class="form-group">
+    <%= f.label :incident_month %>
+    <%= f.select :incident_month, %w(01 02 03 04 05 06 07 08 09 10 11 12), {prompt:"Please select"}, class:'form-control' %>
+  </div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-6">
+  <div class="form-group">
+    <%= f.label :reported_year %>
+    <%= f.select :reported_year, %w(2006 2007 2008 2009 2010 2011 2012 2013 2014), {prompt:"Please select"}, class:'form-control' %>
+  </div>
+</div>
+<div class="col-md-6">
+  <div class="form-group">
+    <%= f.label :reported_month %>
+    <%= f.select :reported_month, %w(01 02 03 04 05 06 07 08 09 10 11 12), {prompt:"Please select"}, class:'form-control' %>
+  </div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+  <div class="form-group">
+    <%= f.label :location_state %>
+    <%= f.text_field :location_state, :class => 'form-control' %>
+  </div>
+</div>
+<div class="col-md-4">
+  <div class="form-group">
+    <%= f.label :location_city %>
+    <%= f.text_field :location_city, :class => 'form-control' %>
+  </div>
+</div>
+<div class="col-md-4">
+  <div class="form-group">
+    <%= f.label :context %>
+    <%= f.select :context, Incident::CONTEXT_VALUES, {prompt:"Please select"}, class:'form-control' %>
+  </div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-12">
+  <div class="form-group">
+    <%= f.label :location_notes %>
+    <%= f.text_area :location_notes,
+      :class => 'form-control', rows:5,
+      placeholder:"Any extra details about where the incident happened" %>
+  </div>
+</div>
+</div>
+
+<div class="row">
+  <h2>Abuse Information</h2>
+  <p>Which of the following types of abuse were present in the incident?</p>
+  <%= f.label "Abuse of Force" %><%= f.check_box :abuse_force %><br />
+  <%= f.label "Abuse of Search" %><%= f.check_box :abuse_search %><br />
+  <%= f.label "General Misconduct" %><%= f.check_box :abuse_misconduct %><br />
+  <%= f.label "Intimidation" %><%= f.check_box :abuse_intimidation %><br />
+  <%= f.label "Sexual Misconduct" %><%= f.check_box :abuse_sexual %><br />
+  <p>For each of the major types of abuse, select all of the varieties that were
+    present in the incident. Only unwarranted actions should be selected. If the
+    police present a valid search warrant to go through a person's home and then
+    shoot the person's dog, only the use of the firearm and the killing of the
+    dog should be selected.</p>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label "Force Variety" %>
+      <%= f.select :abuse_force_variety_list, Incident::FORCE_VALUES, {}, {multiple:true, class:'form-control',size:9} %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label "Search Variety" %>
+      <%= f.select :abuse_search_variety_list, Incident::SEARCH_VALUES, {}, {multiple:true, class:'form-control',size:9} %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label "Misconduct Variety" %>
+      <%= f.select :abuse_misconduct_variety_list, Incident::MISCONDUCT_VALUES, {}, {multiple:true, class:'form-control',size:9} %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label "Intimidation Variety" %>
+      <%= f.select :abuse_intimidation_variety_list, Incident::INTIMIDATION_VALUES, {}, {multiple:true, class:'form-control',size:9} %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label "Sexual Misconduct" %>
+      <%= f.select :abuse_sexual_variety_list, Incident::SEXUAL_VALUES, {}, {multiple:true, class:'form-control',size:9} %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <p>An animal was attacked without good cause.
+      <%= f.check_box :victim_animal %></p>
+      <p>Some of the abuse was targeted at a restrained victim
+      <%= f.check_box :abuse_restrained %></p>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="form-group">
+      <%= f.label "Abuse Notes" %>
+      <%= f.text_area :abuse_notes, class:'form-control', rows:5,
+        placeholder: "Additional information about the victims" %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <h2>Victim Information</h2>
+  <p>For multi-select fields pick every option that applies to the incident. If
+    there was a white victim and an asian victim then select both white and
+    asian.</p>
+  <div class="col-md-12">
+    <div class="form-group">
+      <%= f.label "Total victim count" %>
+      <%= f.text_field :victim_count, class:'form-control' %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label "Victim races" %>
+      <%= f.select :victim_race_list, Incident::VIC_RACE_VALUES, {}, {multiple:true, class:'form-control',size:9} %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label "Victim Ages" %>
+      <%= f.select :victim_age_list, Incident::VIC_AGE_VALUES, {}, {multiple:true, class:'form-control',size:9} %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label "Victim Gender" %>
+      <%= f.select :victim_gender_list, Incident::VIC_GENDER_VALUES, {}, {multiple:true, class:'form-control',size:9} %>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="form-group">
+      <%= f.label "Victim notes" %>
+      <%= f.text_area :victim_notes, class:'form-control', rows:5,
+        placeholder: "Additional information about the victims" %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <h2>Abuser Information</h2>
+  <p>Fill in information for all of the officers involved.
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label "Officer Count" %>
+        <%= f.text_field :officer_count, class:'form-control' %>
+      </div>
+    </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label :officer_race_list %>
+      <%= f.select :officer_race_list, Incident::VIC_RACE_VALUES, {}, {multiple:true, class:'form-control',size:9} %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label :officer_year_list %>
+      <%= f.select :officer_year_list, Incident::OFFICER_YEARS_VALUES, {}, {multiple:true, class:'form-control',size:9} %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label :officer_gender_list %>
+      <%= f.select :officer_gender_list, Incident::VIC_GENDER_VALUES, {}, {multiple:true, class:'form-control',size:9} %>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="form-group">
+      <%= f.label "Department Name" %>
+      <%= f.autocomplete_field :department_name,
+        autocomplete_department_name_incidents_path,
+        update_elements: {city: '#incident_department_city',
+          state:'#incident_department_state',
+          county:'#incident_department_county',
+          level:'#incident_department_level'},
+        class:'form-control', rows:5,
+        placeholder: "example: Miami-Dade Police Department" %>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="form-group">
+      <%= f.label :department_city %>
+      <%= f.text_field :department_city, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="form-group">
+      <%= f.label :department_state %>
+      <%= f.text_field :department_state, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="form-group">
+      <%= f.label :department_county %>
+      <%= f.text_field :department_county, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="form-group">
+      <%= f.label :department_level %>
+      <%= f.select :department_level, Department::DEPARTMENT_LEVELS, {prompt:"Please select"}, class:'form-control' %>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="form-group">
+      <%= f.label "Department Notes" %>
+      <%= f.text_area :department_notes, class:'form-control', rows:5,
+        placeholder: "additional info about the department" %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <h2>Outcomes</h2>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label "Physical Outcomes" %>
+      <%= f.select :physical_outcome_variety_list, Incident::PHYSICAL_OUTCOME_VALUES, {}, {multiple:true, class:'form-control',size:9} %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label "Legal Outcomes" %>
+      <%= f.select :legal_outcome_variety_list, Incident::LEGAL_OUTCOME_VALUES, {}, {multiple:true, class:'form-control',size:9} %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label "HR Outcomes" %>
+      <%= f.select :hr_outcome_variety_list, Incident::HR_OUTCOME_VALUES, {}, {multiple:true, class:'form-control',size:9} %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label "Internal Outcomes" %>
+      <%= f.select :internal_outcome_variety_list, Incident::INTERNAL_OUTCOME_VALUES , {}, {multiple:true, class:'form-control',size:9} %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label "Department Statements" %>
+      <%= f.select :department_statement_variety_list, Incident::DEPARTMENT_UNION_STATEMENT_VALUES, {}, {multiple:true, class:'form-control',size:9} %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label "Union Statements" %>
+      <%= f.select :union_statement_variety_list, Incident::DEPARTMENT_UNION_STATEMENT_VALUES, {}, {multiple:true, class:'form-control',size:9} %>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="form-group">
+      <%= f.label "Total dollar amount for awards/settlements" %>
+      <%= f.text_field :outcome_dollars, class:'form-control' %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <h2>References</h2>
+
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="incident_references_attributes_0_url">Url</label>
+        <input class="form-control" id="incident_references_attributes_0_url" name="incident[references_attributes][0][url]" type="url" />
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="incident_references_attributes_0_headline">Headline</label>
+        <input class="form-control" id="incident_references_attributes_0_headline" name="incident[references_attributes][0][headline]" type="text" />
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="incident_references_attributes_0_Name of reporting source">Name of reporting source</label>
+        <input class="form-control" id="incident_references_attributes_0_org_name" name="incident[references_attributes][0][org_name]" type="text" />
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="incident_references_attributes_1_url">Url</label>
+        <input class="form-control" id="incident_references_attributes_1_url" name="incident[references_attributes][1][url]" type="url" />
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="incident_references_attributes_1_headline">Headline</label>
+        <input class="form-control" id="incident_references_attributes_1_headline" name="incident[references_attributes][1][headline]" type="text" />
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="incident_references_attributes_1_Name of reporting source">Name of reporting source</label>
+        <input class="form-control" id="incident_references_attributes_1_org_name" name="incident[references_attributes][1][org_name]" type="text" />
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="incident_references_attributes_2_url">Url</label>
+        <input class="form-control" id="incident_references_attributes_2_url" name="incident[references_attributes][2][url]" type="url" />
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="incident_references_attributes_2_headline">Headline</label>
+        <input class="form-control" id="incident_references_attributes_2_headline" name="incident[references_attributes][2][headline]" type="text" />
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="incident_references_attributes_2_Name of reporting source">Name of reporting source</label>
+        <input class="form-control" id="incident_references_attributes_2_org_name" name="incident[references_attributes][2][org_name]" type="text" />
+      </div>
+    </div>
+</div>
+
+
+
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                incidents_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>

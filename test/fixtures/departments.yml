@@ -1,0 +1,32 @@
+# == Schema Information
+#
+# Table name: departments
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  city       :string
+#  county     :string
+#  state      :string
+#  level      :string
+#  notes      :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  city: MyString
+  county: MyString
+  state: MyString
+  level: MyString
+  notes: MyText
+
+two:
+  name: MyString
+  city: MyString
+  county: MyString
+  state: MyString
+  level: MyString
+  notes: MyText
