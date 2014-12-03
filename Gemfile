@@ -46,6 +46,14 @@ group :development, :test do
   gem 'spring'
 end
 
+group :test do
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'rspec-rails'
+  gem 'rspec-expectations'
+end
+
 gem 'annotate'
 gem 'acts-as-taggable-on'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
