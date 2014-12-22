@@ -210,6 +210,9 @@ GEM
     seed_dump (3.2.0)
       activerecord (~> 4)
       activesupport (~> 4)
+    simple_form (3.1.0)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
     simple_form_object (0.0.5)
       activemodel (~> 4.0)
       activesupport (~> 4.0)
@@ -271,6 +274,7 @@ DEPENDENCIES
   sass-rails (~> 5.0.0.beta1)
   sdoc (~> 0.4.0)
   seed_dump
+  simple_form
   simple_form_object
   spring
   sqlite3

@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141127040305) do
+ActiveRecord::Schema.define(version: 20141222172657) do
+
+  create_table "contributions", force: true do |t|
+    t.text     "summary"
+    t.integer  "start_year"
+    t.integer  "end_year"
+    t.integer  "start_month"
+    t.integer  "end_month"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "location_state"
+    t.string   "location_city"
+  end
 
   create_table "departments", force: true do |t|
     t.string   "name"

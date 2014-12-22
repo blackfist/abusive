@@ -1,0 +1,10 @@
+<%= simple_form_for @contribution do |f| %>
+  <%= f.input :summary, label: "Summarize the contribution" %>
+  <%= f.input :start_year %>
+  <%= f.input :start_month %>
+  <%= f.input :end_year %>
+  <%= f.input :end_month %>
+  <%= f.input :location_state %>
+  <%= f.input :location_city %>
+  <%= f.button :submit, label: "Create Contribution" %>
+<% end %>

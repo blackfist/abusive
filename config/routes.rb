@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+
   devise_for :users
   resources :incidents do
     get :autocomplete_department_name, :on => :collection
   end
+
+  resources :contributions
   get 'explore' => 'static_pages#explore'
   get 'about'   => 'static_pages#about'
   root 'incidents#index'

@@ -1,0 +1,31 @@
+# == Schema Information
+#
+# Table name: contributions
+#
+#  id             :integer          not null, primary key
+#  summary        :text
+#  start_year     :integer
+#  end_year       :integer
+#  start_month    :integer
+#  end_month      :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  location_state :string
+#  location_city  :string
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  summary: MyString
+  start_year: 1
+  end_year: 1
+  start_month: 1
+  end_month: 1
+
+two:
+  summary: MyString
+  start_year: 1
+  end_year: 1
+  start_month: 1
+  end_month: 1
