@@ -1,17 +1,17 @@
-Feature: Managing Incidents
+Feature: Adding Incidents
   In order to keep track of police misconduct
-  As an administrative user
-  I want to enter data, edit data, and delete data
+  As an end user user
+  I want to enter data
 
   Background:
     Given the following user record:
       | email      | password    |  admin   |
       | tester@test.com     | tester      | true     |
       | enduser@test.com | tester | false |
-    And I log in as "tester@test.com" with password "tester"
+    And I log in as "enduser@test.com" with password "tester"
 
 
-  Scenario: Admin entering a new incident
+  Scenario: End user entering a new incident
     Given that I am at the new incident page
     When I enter the following answers:
       | incident_incident_year    | 2014 |
@@ -26,3 +26,11 @@ Feature: Managing Incidents
     Then I should be on the incident index page
     And I should see "Incident was successfully created."
     And I should have 1 incident
+
+  Scenario: End user trying to edit an incident
+    Given that I am at the incidents page
+    Then I should not see "edit" button
+
+  Scenario: End user trying to delete an incident
+    Given that I am at the incidents page
+    Then I should not see "delete" button
