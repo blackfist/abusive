@@ -21,6 +21,9 @@ Feature: Managing Contributions
       | contribution_end_month | 12 |
       | contribution_location_city         | Dallas  |
       | contribution_location_state  | TX |
+      | contribution_references_attributes_0_url | http://www.test.com |
+      | contribution_references_attributes_0_headline | Test |
+      | contribution_references_attributes_0_org_name | Test |
 
     And I click "Create Contribution"
     Then I should be on the contribution index page

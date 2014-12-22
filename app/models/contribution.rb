@@ -15,4 +15,6 @@
 #
 
 class Contribution < ActiveRecord::Base
+  has_many :references, :inverse_of => :contribution
+  accepts_nested_attributes_for :references
 end

@@ -2,6 +2,7 @@ class ContributionsController < ApplicationController
   before_action :authenticate_user!, only:[:new, :index]
   def new
     @contribution = Contribution.new
+    @contribution.references.build
   end
 
   def create

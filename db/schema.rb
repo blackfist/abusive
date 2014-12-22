@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141222172657) do
+ActiveRecord::Schema.define(version: 20141222201540) do
 
   create_table "contributions", force: true do |t|
     t.text     "summary"
@@ -78,10 +78,11 @@ ActiveRecord::Schema.define(version: 20141222172657) do
     t.date     "date_accessed"
     t.string   "headline"
     t.string   "org_name"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "incident_id"
     t.date     "publish_date"
+    t.integer  "contribution_id"
   end
 
   create_table "taggings", force: true do |t|
