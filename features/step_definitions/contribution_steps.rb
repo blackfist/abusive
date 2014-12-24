@@ -9,6 +9,12 @@ When(/^I enter the following answers in new contribution form:$/) do |table|
   end
 end
 
+When(/^I select the following answers in new contribution form:$/) do |table|
+  table.rows_hash.each do |row|
+    select row[1], from: row[0]
+  end
+end
+
 Then(/^I should be on the contribution index page$/) do
   expect(current_path).to eq(contributions_path)
 end

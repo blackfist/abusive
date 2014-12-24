@@ -25,6 +25,10 @@ Feature: Managing Contributions
       | contribution_references_attributes_0_headline | Test |
       | contribution_references_attributes_0_org_name | Test |
 
+    And I select the following answers in new contribution form:
+
+      | contribution_category | Rehire abuser |
+
     And I click "Create Contribution"
     Then I should be on the contribution index page
     And I should see "Contribution was successfully created."

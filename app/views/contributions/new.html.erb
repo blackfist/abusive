@@ -1,5 +1,6 @@
 <%= simple_form_for @contribution do |f| %>
   <%= f.input :summary, label: "Summarize the contribution" %>
+  <%= f.input :category, collection: Contribution.CATEGORIES %>
   <%= f.input :start_year %>
   <%= f.input :start_month %>
   <%= f.input :end_year %>

@@ -25,10 +25,11 @@ class ContributionsController < ApplicationController
 
   private
     def contribution_params
-      params.require(:contribution).permit(:contribution_summary,
-        :contribution_start_year, :contribution_end_year,
-        :contribution_start_month, :contribution_end_month,
-        :contribution_location_city, :contribution_location_state )
+      params.require(:contribution).permit(:summary,
+        :start_year, :end_year,
+        :start_month, :end_month,
+        :location_city, :location_state,
+        :category )
     end
 
 end

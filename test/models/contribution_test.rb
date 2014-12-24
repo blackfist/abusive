@@ -12,6 +12,7 @@
 #  updated_at     :datetime         not null
 #  location_state :string
 #  location_city  :string
+#  category       :string
 #
 
 require 'test_helper'
