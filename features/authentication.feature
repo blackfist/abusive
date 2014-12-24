@@ -12,3 +12,11 @@ Feature: Require authentication for resources
     Given that I am not authenticated
     When I visit new contribution page
     Then I should be redirected to login page
+
+  Scenario: Unauthenticated user visits show contribution page
+    Given that I am not authenticated
+    Given the following contribution exists
+      | summary | test |
+      | category | rehire |
+    When I visit show contribution page
+    Then I should be redirected to login page

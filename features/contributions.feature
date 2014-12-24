@@ -33,3 +33,17 @@ Feature: Managing Contributions
     Then I should be on the contribution index page
     And I should see "Contribution was successfully created."
     And I should have 1 contribution
+
+
+  Scenario: Admin viewing an incident
+    Given the following contribution exists
+      | summary | test summary |
+      | category | rehire |
+      | start_year | 2000 |
+      | start_month | 3 |
+    When I go to that contribution show page
+    Then I should see the following information
+      | summary | test summary |
+      | category | rehire |
+      | start_year | 2000 |
+      | start_year | 3 |

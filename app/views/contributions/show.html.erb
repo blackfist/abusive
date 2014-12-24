@@ -1,0 +1,10 @@
+<%= show_for @contribution do |c| %>
+  <%= c.attribute :summary %>
+  <%= c.attribute :category %>
+  <%= c.attribute :location_state %>
+  <%= c.attribute :location_city %>
+  <%= c.attribute :start_year %>
+  <%= c.attribute :start_month %>
+  <%= c.attribute :end_year %>
+  <%= c.attribute :end_month %>
+<% end %>

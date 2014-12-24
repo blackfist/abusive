@@ -2,6 +2,16 @@ Given(/^that I am at the new contribution page$/) do
   visit new_contribution_path
 end
 
+When(/^I go to that contribution show page$/) do
+  @contrib = Contribution.last
+  visit contribution_path(@contrib)
+end
+
+
+Given(/^the following contribution exists$/) do |table|
+  Contribution.create!(table.rows_hash)
+end
+
 When(/^I enter the following answers in new contribution form:$/) do |table|
 #  save_and_open_page
   table.rows_hash.each do |row|
@@ -21,4 +31,10 @@ end
 
 Then(/^I should have (\d+) contribution$/) do |count|
   expect(Contribution.count).to eq(count.to_i)
+end
+
+Then(/^I should see the following information$/) do |table|
+  table.rows_hash.each do |row|
+    expect(page).to have_content(row[1])
+  end
 end

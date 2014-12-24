@@ -21,3 +21,8 @@ end
 Then(/^I should see a link to explore$/) do
   expect(page).to have_link("Explore", href: "/explore")
 end
+
+When(/^I visit show contribution page$/) do
+  @contrib = Contribution.last
+  visit contribution_path(@contrib)
+end

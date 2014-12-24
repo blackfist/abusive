@@ -1,5 +1,5 @@
 class ContributionsController < ApplicationController
-  before_action :authenticate_user!, only:[:new, :index]
+  before_action :authenticate_user!, only:[:new, :index, :show]
   def new
     @contribution = Contribution.new
     @contribution.references.build
@@ -21,6 +21,10 @@ class ContributionsController < ApplicationController
 
   def index
     @contributions = Contribution.all
+  end
+
+  def show
+    @contribution = Contribution.find(params[:id])
   end
 
   private
