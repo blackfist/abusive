@@ -13,6 +13,7 @@
 #  location_state :string
 #  location_city  :string
 #  category       :string
+#  department_id  :integer
 #
 
 require 'test_helper'

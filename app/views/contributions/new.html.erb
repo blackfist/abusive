@@ -8,6 +8,29 @@
   <%= f.input :location_state %>
   <%= f.input :location_city %>
 
+  <h2>Department</h2>
+  <%= label_tag "Department Name" %>
+  <%= autocomplete_field_tag 'contribution_department_name', '',
+  autocomplete_department_name_contributions_path,
+  update_elements: {city: '#contribution_department_city',
+    state:'#contribution_department_state',
+    county:'#contribution_department_county',
+    level:'#contribution_department_level'},
+    class:'form-control', rows:5,
+      placeholder: "example: Miami-Dade Police Department" %>
+
+  <%= label_tag :department_city %>
+  <%= text_field_tag :contribution_department_city %>
+
+  <%= label_tag :department_state %>
+  <%= text_field_tag :contribution_department_state %>
+
+  <%= label_tag :department_county %>
+  <%= text_field_tag :contribution_department_county %>
+
+  <%= label_tag :department_level %>
+  <%= select_tag 'contribution_department_level', options_for_select(Department::DEPARTMENT_LEVELS) %>
+
   <h2>References</h2>
   <%= f.nested_fields_for :references do |r| %>
     <%= r.input :url %>

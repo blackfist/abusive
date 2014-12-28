@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141224042307) do
+ActiveRecord::Schema.define(version: 20141224175932) do
 
   create_table "contributions", force: true do |t|
     t.text     "summary"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20141224042307) do
     t.string   "location_state"
     t.string   "location_city"
     t.string   "category"
+    t.integer  "department_id"
   end
 
   create_table "departments", force: true do |t|

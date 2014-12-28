@@ -13,18 +13,28 @@
 #  location_state :string
 #  location_city  :string
 #  category       :string
+#  department_id  :integer
 #
 
+require 'elasticsearch/model'
+
+
 class Contribution < ActiveRecord::Base
+
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
   def self.CATEGORIES
     [["Rehire abuser","rehire"],
     ["Widespread corruption","corruption"],
     ["Preferential treatment","preference"],
     ["Predatory policing","targeting"],
+    ["Retailiate against good cop","retailiation"],
     ["Taunting / Inciting","inciting"]]
   end
 
   has_many :references, :inverse_of => :contribution
+  belongs_to :department, inverse_of: :contributions
   accepts_nested_attributes_for :references
   validates :category, presence: true, inclusion: { in: self.CATEGORIES.map{|r| r[1] } }
 

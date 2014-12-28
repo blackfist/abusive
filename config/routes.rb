@@ -5,7 +5,10 @@ Rails.application.routes.draw do
     get :autocomplete_department_name, :on => :collection
   end
 
-  resources :contributions
+  resources :contributions do
+    get :autocomplete_department_name, :on => :collection
+  end
+
   get 'explore' => 'static_pages#explore'
   get 'about'   => 'static_pages#about'
   root 'incidents#index'

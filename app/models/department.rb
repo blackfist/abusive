@@ -26,6 +26,7 @@ class Department < ActiveRecord::Base
     inclusion: {in: DEPARTMENT_LEVELS.map{|r| r[1]}}
 
   has_many :incidents, :inverse_of => :department
+  has_many :contributions, inverse_of: :department
 
 
 end
