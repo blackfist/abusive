@@ -56,5 +56,6 @@ Feature: Managing Contributions
       | start_year | 2000 |
       | start_month | 3 |
     When I visit contribution index page
-    Then I should see the following information
-      |summary | test summary |
+    Then I should see a "test summary" content link
+    And I should see an edit link
+    And I should see a delete link

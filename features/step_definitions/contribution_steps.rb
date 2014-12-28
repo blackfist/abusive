@@ -38,3 +38,15 @@ Then(/^I should see the following information$/) do |table|
     expect(page).to have_content(row[1])
   end
 end
+
+Then(/^I should see a "(.*?)" content link$/) do |arg1|
+  expect(page).to have_link(arg1, href: contribution_path(Contribution.last))
+end
+
+Then(/^I should see an edit link$/) do
+  expect(page).to have_link('Edit', href: edit_contribution_path(Contribution.last))
+end
+
+Then(/^I should see a delete link$/) do
+  expect(page).to have_link('Delete', href:contribution_path(Contribution.last))
+end
