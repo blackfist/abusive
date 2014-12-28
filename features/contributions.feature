@@ -24,6 +24,7 @@ Feature: Managing Contributions
       | contribution_references_attributes_0_url | http://www.test.com |
       | contribution_references_attributes_0_headline | Test |
       | contribution_references_attributes_0_org_name | Test |
+      | contribution_department_name | Test Department |
 
     And I select the following answers in new contribution form:
 
@@ -35,7 +36,7 @@ Feature: Managing Contributions
     And I should have 1 contribution
 
 
-  Scenario: Admin viewing an incident
+  Scenario: Admin viewing a contribution
     Given the following contribution exists
       | summary | test summary |
       | category | rehire |
@@ -47,3 +48,13 @@ Feature: Managing Contributions
       | category | rehire |
       | start_year | 2000 |
       | start_year | 3 |
+
+  Scenario: Admin viewing contribution index
+    Given the following contribution exists
+      | summary | test summary |
+      | category | rehire |
+      | start_year | 2000 |
+      | start_month | 3 |
+    When I visit contribution index page
+    Then I should see the following information
+      |summary | test summary |
