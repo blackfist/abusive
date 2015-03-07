@@ -142,13 +142,19 @@
   </div>
   <div class="col-md-4">
     <div class="form-group">
+      <div class="form-group">
+        <%= f.label "TTP" %>
+        <%= f.select :ttp_list, Incident::TTP_VALUES, {}, {multiple:true, class:'form-control',size:9} %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="form-group">
       <p>An animal was attacked without good cause.
       <%= f.check_box :victim_animal %></p>
       <p>Some of the abuse was targeted at a restrained victim
       <%= f.check_box :abuse_restrained %></p>
     </div>
-  </div>
-  <div class="col-md-12">
     <div class="form-group">
       <%= f.label "Abuse Notes" %>
       <%= f.text_area :abuse_notes, class:'form-control', rows:5,

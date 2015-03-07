@@ -97,6 +97,6 @@ class IncidentsController < ApplicationController
           {abuse_misconduct_variety_list: []},{abuse_intimidation_variety_list: []},
           {abuse_sexual_variety_list: []}, {physical_outcome_variety_list: []},
           {legal_outcome_variety_list: []}, {hr_outcome_variety_list: []}, {internal_outcome_variety_list: []},
-          {department_statement_variety_list: []}, {union_statement_variety_list: []} )
+          {department_statement_variety_list: []}, {union_statement_variety_list: []}, {ttp_list: []})
     end
 end

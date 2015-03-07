@@ -36,6 +36,7 @@ class IncidentForm
   attribute :department_statement_variety_list
   attribute :union_statement_variety_list
   attribute :outcome_dollars, :integer
+  attribute :ttp_list
 
   # Attributes for the reference article
   attribute :references_attributes
@@ -127,6 +128,7 @@ class IncidentForm
       officer_year_list: officer_year_list,
       officer_gender_list: officer_gender_list,
       officer_multiple_incident: officer_multiple_incident,
+      ttp_list: ttp_list,
       outcome_dollars: outcome_dollars)
     references_attributes.each do |r|
       @incident.references.create(r[1])

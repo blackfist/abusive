@@ -156,6 +156,15 @@ class Incident < ActiveRecord::Base
     ["20 or more","20+"],
     ["Unknown","unknown"]]
 
+  TTP_VALUES = [["Issue impossible/conflicting orders","e - impossible"],
+    ["Invade personal space","e - space"],
+    ["Pain escalation","e - pain"],
+    ["Fail to identify/plainclothes/jump out","e - identification"],
+    ["Victim was a jerk","a - blame victim"],
+    ["Shout alibi","a - shout alibi"],
+    ["Fear for safety", "a - fear safety"]
+  ]
+
   TAG_VARIABLES = [["VIC_RACE_VALUES","vic.race.","victim_race_list"],
     ["VIC_AGE_VALUES","vic.age.","victim_age_list"],
     ["VIC_GENDER_VALUES","vic.gender.","victim_gender_list"],
@@ -175,7 +184,7 @@ class Incident < ActiveRecord::Base
     :abuse_intimidation_variety, :abuse_sexual_variety, :physical_outcome_variety,
     :legal_outcome_variety, :hr_outcome_variety, :internal_outcome_variety,
     :department_statement_variety, :union_statement_variety, :officer_race,
-    :officer_gender, :officer_year
+    :officer_gender, :officer_year, :ttp
 
   validates :incident_year, numericality: {greater_than_or_equal_to: 2000,
                                            less_than_or_equal_to: 2015},
