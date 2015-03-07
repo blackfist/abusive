@@ -27,9 +27,9 @@ class Contribution < ActiveRecord::Base
   def self.CATEGORIES
     [["Rehire abuser","rehire"],
     ["Widespread corruption","corruption"],
-    ["Preferential treatment","preference"],
+    ["Preferential treatment/sentencing","preference"],
     ["Predatory policing","targeting"],
-    ["Retailiate against good cop","retailiation"],
+    ["Retailiate against accountability","retailiation"],
     ["Taunting / Inciting","inciting"]]
   end
 
