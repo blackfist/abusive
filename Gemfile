@@ -34,13 +34,6 @@ gem 'rails-html-sanitizer', '~> 1.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :production do
-  # we'll use postgres in production and we'll use a different
-  # instance of elasticsearch
-  gem 'pg'
-  gem 'bonsai-elasticsearch-rails'
-  gem 'rails_12factor'
-end
 
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
@@ -77,3 +70,6 @@ gem 'elasticsearch-rails'
 gem 'nested_form_fields'
 gem 'simple_form'
 gem 'show_for'
+gem 'pg'
+gem 'bonsai-elasticsearch-rails'
+gem 'rails_12factor'
