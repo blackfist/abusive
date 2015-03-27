@@ -30,6 +30,7 @@ class Contribution < ActiveRecord::Base
     ["Preferential treatment/sentencing","preference"],
     ["Predatory policing","targeting"],
     ["Retailiate against accountability","retailiation"],
+    ["Ticket Quota","quota"],
     ["Taunting / Inciting","inciting"]]
   end
 
