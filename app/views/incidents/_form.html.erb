@@ -1,10 +1,3 @@
-<h1>TODO ITEMS ON THIS FORM</h1>
-<ul>
-  <li>Need to be able to add more references</li>
-  <li>Needs to be a bit prettier</li>
-  <li>Form seems to change the month to 1 if not set explictly</li>
-  <li>Editing an incident seems to add another reference</li>
-</ul>
 <%= form_for @incident_form, :html => { :class => "form-horizontal incident", :role => "form" } do |f| %>
 
   <% if @incident_form.errors.any? %>
