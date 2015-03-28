@@ -7,9 +7,9 @@ class IncidentsController < ApplicationController
   # GET /incidents.json
   def index
     if params[:search_query].present?
-      @incidents = Incident.search(params[:search_query]).records
+      @incidents = Incident.search(params[:search_query]).records.paginate(:page => params[:page], :per_page => 10)
     else
-      @incidents = Incident.all
+      @incidents = Incident.all.paginate(:page => params[:page], :per_page => 10)
     end
 
     respond_to do |format|

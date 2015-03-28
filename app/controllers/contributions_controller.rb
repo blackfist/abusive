@@ -29,9 +29,9 @@ class ContributionsController < ApplicationController
 
   def index
     if params[:search_query].present?
-      @contributions = Contribution.search(params[:search_query]).records
+      @contributions = Contribution.search(params[:search_query]).records.paginate(:page => params[:page], :per_page => 10)
     else
-      @contributions = Contribution.all
+      @contributions = Contribution.all.paginate(:page => params[:page], :per_page => 10)
     end
   end
 
