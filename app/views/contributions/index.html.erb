@@ -8,6 +8,8 @@
     <%= submit_tag "Search", name: nil %>
   </p>
 <% end %>
+<p><strong><%= @contributions.count %></strong> incidents and counting.</p>
+
 
 <div>
   <%= link_to "New", new_contribution_path, class:'btn btn-primary' %>
