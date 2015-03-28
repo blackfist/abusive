@@ -59,3 +59,4 @@ Feature: Managing Contributions
     Then I should see a "test summary" content link
     And I should see an edit link
     And I should see a delete link
+    And I should see a new contribution link

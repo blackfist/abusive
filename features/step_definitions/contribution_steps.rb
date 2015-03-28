@@ -50,3 +50,7 @@ end
 Then(/^I should see a delete link$/) do
   expect(page).to have_link('Delete', href:contribution_path(Contribution.last))
 end
+
+Then(/^I should see a new contribution link$/) do
+  expect(page).to have_link('New', href:new_contribution_path)
+end
