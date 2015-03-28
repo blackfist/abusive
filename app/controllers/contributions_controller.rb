@@ -28,7 +28,11 @@ class ContributionsController < ApplicationController
   end
 
   def index
-    @contributions = Contribution.all
+    if params[:search_query].present?
+      @contributions = Contribution.search(params[:search_query]).records
+    else
+      @contributions = Contribution.all
+    end
   end
 
   def show

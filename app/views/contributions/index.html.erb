@@ -2,6 +2,13 @@
   <h1>Contributions</h1>
 </div>
 
+<%= form_tag contributions_path, method: :get do %>
+  <p>
+    <%= text_field_tag :search_query, params[:search_query] %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %>
+
 <div>
   <%= link_to "New", new_contribution_path, class:'btn btn-primary' %>
 </div>
